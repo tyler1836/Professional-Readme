@@ -1,4 +1,5 @@
 const fs = require("fs");
+const { type } = require("os");
 
 const generateReadme = (title, description, table) => {
     return `
@@ -13,8 +14,7 @@ const generateReadme = (title, description, table) => {
 ## Table of contents
     *${table}
 ## Installation
-- Better catch of user inputed data in the search bar.
-- Button to create a new random cat fact!
+-
 
 ## Licensing
 
@@ -24,29 +24,65 @@ const generateReadme = (title, description, table) => {
 
     `
 }
+const tableContents = (templateData) => {
+    if(templateData.table === false) {
+        return;
+    }
+    return `## Table of contents
+* **[Installation](#installation)**
+* **[Licensing](#licensing)**
+* **[Usage](#usage)**
+* **[Contributers](#contributers)**
+* **[Tests](#test)**
+* **[Questions](#additional-questions)**
+     `
+   
+}
+const badge = (templateData) =>{
+    if(templateData.badge !== 'None'){
+        return `![license badge](https://img.shields.io/badge/license-${templateData.addBadge}-blue.svg)
+
+
+* For more info on MIT licensing please visit the [MIT page](https://opensource.org/licenses/MIT)
+* For more info on GPL 3.0 please visit the [GPL page](https://www.gnu.org/licenses/gpl-3.0.en.html)        
+* For more info on Apache 2.0 please visit the [Apache page](https://www.apache.org/licenses/LICENSE-2.0)       ` 
+    }
+     return '';
+    
+}
 
 module.exports = templateData => {
     console.log(templateData);
     return ` 
-    # ${templateData.title}
+# ${templateData.title}
+## Licensing
+${badge(templateData)}
 
 
 
-    ## Description
+## Description
     
-    - ${templateData.description}
+- ${templateData.description}
     
-    ## Table of contents
-        *${templateData.table}
-    ## Installation
-    - Better catch of user inputed data in the search bar.
-    - Button to create a new random cat fact!
+${tableContents(templateData)}
+ 
+## Installation
+-${templateData.install}
     
-    ## Licensing
+## Usage
+-${templateData.use}
     
     
-    ## Usage
-    
+## Contributions
+-${templateData.contributers}
+
+## Test
+-${templateData.test}
+
+## Additional Questions
+[Github](https://github.com/${templateData.github})
+
+-Contact Me at ${templateData.email}  
     
     `
 };

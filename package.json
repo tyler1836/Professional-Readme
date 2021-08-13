@@ -1,0 +1,22 @@
+{
+  "name": "professional-readme",
+  "version": "1.0.0",
+  "description": "Readme generator",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tyler1836/Professional-Readme.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tyler1836/Professional-Readme/issues"
+  },
+  "homepage": "https://github.com/tyler1836/Professional-Readme#readme",
+  "dependencies": {
+    "inquirer": "^8.1.2"
+  }
+}
